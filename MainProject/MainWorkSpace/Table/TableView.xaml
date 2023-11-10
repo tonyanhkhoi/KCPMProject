@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="MainProject.MainWorkSpace.Table.TableView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MainProject.MainWorkSpace.Table"
+             xmlns:ViewModel="clr-namespace:MainProject.ViewModel"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             mc:Ignorable="d" 
+             x:Name="Table_View"
+             d:DataContext="{d:DesignInstance Type=ViewModel:TableViewModel}"
+             xmlns:test="clr-namespace:MainProject"
+             d:DesignHeight="480" d:DesignWidth="700">
+    <ListView ItemsSource="{Binding ListTable, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+              SelectedItem="{Binding CurrentTable, Mode=TwoWay}"
+              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <local:FreeTable_UC DataContext="{Binding table}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding DataContext.CloseViewChooseTableCommand, ElementName=Table_View}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </local:FreeTable_UC>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        <ListView.ItemsPanel>
+            <ItemsPanelTemplate>
+                <WrapPanel Orientation="Horizontal"></WrapPanel>
+            </ItemsPanelTemplate>
+        </ListView.ItemsPanel>
+    </ListView>
+</UserControl>

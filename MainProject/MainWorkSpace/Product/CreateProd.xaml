@@ -1,0 +1,176 @@
+﻿<UserControl x:Class="MainProject.MainWorkSpace.Product.CreateProd"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:MainProject.MainWorkSpace.Product"
+             xmlns:model="clr-namespace:MainProject.Model"
+             xmlns:main="clr-namespace:MainProject.MainWorkSpace"
+             xmlns:viewmodel="clr-namespace:MainProject.ViewModel"
+             xmlns:rules="clr-namespace:MainProject.ValidationRules"
+             mc:Ignorable="d"
+             Tag="Create product"
+             Name="UserControl"
+             d:DataContext="{d:DesignInstance Type=viewmodel:ProductViewModel}"
+             Height="550"
+             Width="400">
+    <UserControl.Resources>
+        <main:MainViewModel x:Key="MainVM"></main:MainViewModel>
+    </UserControl.Resources>
+    <DockPanel>
+        <Grid DockPanel.Dock="Top"
+              Background="{StaticResource MainColor}">
+            <Border BorderBrush="Gray"
+                    BorderThickness="1" />
+            <TextBlock Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                       Text="Thêm sản phẩm"
+                       FontSize="20"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" />
+            <Button Background="Transparent"
+                    BorderBrush="Transparent"
+                    Margin="5"
+                    Command="{Binding ExitAddProductView_Command}"
+                    HorizontalAlignment="Right">
+                <materialDesign:PackIcon Kind="Close"
+                                         Width="20"
+                                         Height="20"
+                                         Foreground="White"/>
+            </Button>
+        </Grid>
+        <ScrollViewer DockPanel.Dock="Bottom"
+                      Background="White"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      HorizontalScrollBarVisibility="Disabled">
+            <StackPanel>
+                <Button Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Grid.Row="1"
+                        Margin="0,30,0,0"
+                        Width="180"
+                        Height="140"
+                        Padding="0"
+                        Background="Transparent"
+                        Command="{Binding AddUpdateImageProductCommand}">
+                    <Grid Height="140" Width="180">
+                        <Image Stretch="Fill"
+                                   Source="{Binding Newproduct.Image}" />
+                    </Grid>
+                    
+                </Button>
+                <TextBlock Text="Nhấp vào để chọn ảnh." TextAlignment="Center" Margin="0,5,0,20"></TextBlock>
+                <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                         materialDesign:HintAssist.Hint="Tên sản phẩm"
+                         FontSize="14"
+                         Margin="70,5"
+                         MaxWidth="500"
+                         Height="40"
+                         Padding="15,10"
+                         Validation.Error="Validation_Error">
+                    <TextBox.Text>
+                        <Binding Path="Newproduct.Name"
+                                 ValidatesOnDataErrors="True"
+                                 UpdateSourceTrigger="PropertyChanged"
+                                 NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <rules:NotNullableValidationRule ErrorMessage="Không được để trống hoặc để trắng"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <ComboBox Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                          materialDesign:HintAssist.Hint="Danh mục"
+                          ItemsSource="{Binding Source={StaticResource MainVM}, Path=ListType}"
+                          SelectedItem="{Binding Type_in_Combobox_AddProduct,  UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
+                          DisplayMemberPath="Type"
+                          FontSize="13"
+                          MaxWidth="500"
+                          Margin="70,5"
+                          Height="40"
+                         Padding="15,10"/>
+                <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                         materialDesign:HintAssist.Hint="Giá"
+                         FontSize="13"
+                         materialDesign:TextFieldAssist.SuffixText="đ"
+                         MaxWidth="500"
+                         Margin="70,5"
+                         Height="40"
+                         Padding="15,10"
+                         Validation.Error="Validation_Error">
+                    <TextBox.Text>
+                        <Binding Path="Newproduct.Price"
+                                 StringFormat="{}{0:N0}"
+                                 NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <rules:CharacterValidationRule ValidCharacterSet="0123456789"
+                                                               ErrorMessage="Chỉ được nhập số" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                         materialDesign:HintAssist.Hint="Mô tả"
+                         Name="Description"
+                         FontSize="13"
+                         materialDesign:TextFieldAssist.SuffixText="{Binding ElementName=Description, Path=Text.Length, StringFormat='{}{0}/30'}"
+                         TextWrapping="Wrap"
+                         MaxWidth="500"
+                         Margin="70,5"
+                         Height="40"
+                         Padding="15,10"
+                         Validation.Error="Validation_Error">
+                    <TextBox.Text>
+                        <Binding Path="Newproduct.Decription"
+                                 ValidatesOnDataErrors="True"
+                                 UpdateSourceTrigger="PropertyChanged"
+                                 NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <rules:LengthRangeValidationRule Min="0"
+                                                                 Max="30"
+                                                                 ErrorMessage="Không được vượt quá số ký tự cho phép" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Grid Margin="70,10"
+                      MaxWidth="500">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Height="40"
+                            Style="{StaticResource MaterialDesignOutlinedButton}"
+                            ToolTip="MaterialDesignOutlinedButton"
+                            Content="Hủy"
+                            Command="{Binding CancelAddProduct_Command}"
+                            Foreground="{StaticResource MainColor}"
+                            BorderBrush="{StaticResource MainColor}"
+                            FontSize="20"
+                            Margin="10" />
+                    <Button Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                            Grid.Column="1"
+                            Height="40"
+                            Command="{Binding AddProduct_Command_Command}"
+                            CommandParameter="{Binding IsValid, ElementName=UserControl}"
+                            HorizontalAlignment="Stretch"
+                            Background="{StaticResource MainColor}"
+                            BorderBrush="{StaticResource MainColor}"
+                            Foreground="White"
+                            Margin="10"
+                            Content="Thêm"
+                            FontSize="20">
+                    </Button>
+
+                </Grid>
+
+            </StackPanel>
+
+
+
+
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

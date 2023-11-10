@@ -1,0 +1,76 @@
+﻿<Window x:Class="MainProject.ApplicationWorkSpace.ApplicationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        xmlns:local="clr-namespace:MainProject.ApplicationWorkSpace"
+        xmlns:ViewModel="clr-namespace:MainProject.ViewModel"
+        xmlns:MainWorkSpace="clr-namespace:MainProject.MainWorkSpace"
+        xmlns:HistoryWorkSpace="clr-namespace:MainProject.HistoryWorkSpace"
+        xmlns:StatisticWorkSpace="clr-namespace:MainProject.StatisticWorkSpace"
+        xmlns:ProductManagerWorkSpace="clr-namespace:MainProject.MainWorkSpace.Product"
+        xmlns:TableManagerWorkSpace="clr-namespace:MainProject.MainWorkSpace.Table"
+        xmlns:SettingWorkSpace="clr-namespace:MainProject.SettingWorkSpace"
+        d:DataContext="{d:DesignInstance Type=local:ApplicationViewModel}"
+        Title="Coffee Manager">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type MainWorkSpace:MainViewModel}">
+            <MainWorkSpace:MainView x:Name="MainWorkSpace"/>
+        </DataTemplate>
+        <!--<DataTemplate DataType="{x:Type AccountWorkSpace:AccountViewModel}">
+            <AccountWorkSpace:AccountView />
+        </DataTemplate>-->
+        <DataTemplate DataType="{x:Type ViewModel:HistoryViewModel}">
+            <HistoryWorkSpace:HistoryView x:Name="HistoryWorkSpace"/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModel:ManageProductviewModel}">
+            <ProductManagerWorkSpace:ProdManager />
+        </DataTemplate>
+        <!--<DataTemplate DataType="{x:Type VoucherWorkSpace:VoucherViewModel}">
+            <VoucherWorkSpace:VoucherPreviewPanel />
+        </DataTemplate>-->
+        <DataTemplate DataType="{x:Type StatisticWorkSpace:StatisticViewModel}">
+            <StatisticWorkSpace:StatisticView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModel:TableViewModel}">
+            <TableManagerWorkSpace:TableManager />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModel:SettingViewModel}">
+            <SettingWorkSpace:SettingView />
+        </DataTemplate>
+    </Window.Resources>
+    
+    <DockPanel>
+        <TabControl ItemsSource="{Binding WorkSpaces}"
+                    Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
+                    materialDesign:ColorZoneAssist.Mode="PrimaryMid"
+                    SelectedItem="{Binding CurrentWorkSpace}">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal"
+                                Width="220">
+                        <ContentPresenter Content="{Binding IconDisplay}"
+                                          Margin="10,0" />
+                        <TextBlock Text="{Binding NameWorkSpace}"
+                                   VerticalAlignment="Center"
+                                   Margin="10,0" />
+                    </StackPanel>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+
+            <TabControl.ItemContainerStyle>
+                <Style TargetType="TabItem"
+                       BasedOn="{StaticResource MaterialDesignNavigationRailTabItem}">
+                    <Setter Property="Width"
+                            Value="220" />
+                    <Setter Property="HorizontalAlignment"
+                            Value="Left" />
+                    <Setter Property="Height"
+                            Value="Auto" />
+                </Style>
+            </TabControl.ItemContainerStyle>
+        </TabControl>
+    </DockPanel>
+</Window>
