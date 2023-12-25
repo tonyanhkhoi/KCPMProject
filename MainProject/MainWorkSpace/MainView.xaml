@@ -21,7 +21,7 @@
             <ColumnDefinition Width="11*"/>
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
-        <Table:TableDetailView DataContext="{Binding Tableviewmodel}" Grid.Column="1" />
+        <Table:TableDetailView DataContext="{Binding Tableviewmodel}" Grid.Column="1" Loaded="TableDetailView_Loaded" />
 
         <DockPanel>
             <materialDesign:ColorZone DockPanel.Dock="Top"

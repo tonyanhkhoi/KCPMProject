@@ -26,5 +26,9 @@ namespace MainProject.MainWorkSpace
             Console.WriteLine("MainView is created");
         }
 
+        private void TableDetailView_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

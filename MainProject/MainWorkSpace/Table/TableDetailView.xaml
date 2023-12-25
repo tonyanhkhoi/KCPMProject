@@ -79,7 +79,7 @@
             <Border BorderBrush="Gray"
                     BorderThickness="0,1,0,1"
                     Grid.ColumnSpan="2" />
-            <CheckBox Height="25"
+            <!--<CheckBox Height="25"
                       x:Name="cbxGetOut"
                       Width="80"
                       Style="{StaticResource MaterialDesignFilterChipAccentCheckBox}"
@@ -89,7 +89,7 @@
                       Background="{StaticResource MainColor}"
                       Foreground="Green">
                 Mang đi
-            </CheckBox>
+            </CheckBox>-->
             <StackPanel Grid.Column="1"
                         Orientation="Vertical">
                 <TextBlock Text="Tổng tiền"
