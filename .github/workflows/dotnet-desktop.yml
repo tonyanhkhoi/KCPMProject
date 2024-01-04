@@ -48,6 +48,9 @@ jobs:
 
     - name: Execute unit tests
       run: dotnet test MainProject/MainProject.csproj
+
+    - name: Mutation Test
+      run: dotnet stryker MainProject/MainProject.csproj
       
     - name: Restore the application
       run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
