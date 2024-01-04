@@ -41,7 +41,10 @@ jobs:
       - name: Install dotnet stryker
         run: dotnet tool install dotnet-stryker
 
+      - name: Init dotnet-stryker
+        run: dotnet stryker init --config-file "stryker-config.json"
+        
       - name: Execute mutation tests
-        run: dotnet stryker
+        run: dotnet stryker MainProject/MainProject.csproj
 
 
