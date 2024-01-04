@@ -35,7 +35,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Install stryker
-      run: npm install stryker@latest
+      run: npm install -g stryker@latest
     
     - name: Install date-format
       run: npm install date-format@latest
@@ -47,7 +47,7 @@ jobs:
       run: npm install log4js@latest
 
     - name: Execute unit tests
-      run: stryker run
+      run: dotnet stryker
       
     - name: Restore the application
       run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
