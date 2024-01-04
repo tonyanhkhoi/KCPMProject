@@ -19,6 +19,7 @@ jobs:
     env:
       Solution_Name: MainProject/MainProject.sln
 
+
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -46,7 +47,7 @@ jobs:
     #   run: npm install log4js@latest
 
     - name: Execute unit tests
-      run: dotnet stryker --solution-path MainProject.sln
+      run: dotnet test MainProject/MainProject.csproj
       
     - name: Restore the application
       run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
