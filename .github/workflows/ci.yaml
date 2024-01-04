@@ -41,7 +41,7 @@ jobs:
     - name: Init dotnet-stryker
       run: dotnet stryker init --config-file "stryker-config.json"
     - name: Execute mutation tests
-      run: dotnet stryker
+      run: dotnet stryker -p MainProject.csproj
     - name: Restore the application
       run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
       env:
