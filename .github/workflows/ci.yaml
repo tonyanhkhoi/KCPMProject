@@ -33,7 +33,7 @@ jobs:
         run: nuget restore MainProject/MainProject.sln
 
       - name: Execute unit tests
-        run: dotnet test
+        run: dotnet test MainProject/MainProject.sln
 
       - name: Create new tool manifest
         run: dotnet new tool-manifest
