@@ -17,7 +17,7 @@ jobs:
     runs-on: windows-latest  
 
     env:
-      Solution_Name: MainProject/MainProject.sln
+      Solution_Name: MainProject.sln
 
 
     steps:
@@ -47,7 +47,7 @@ jobs:
     #   run: npm install log4js@latest
 
     - name: Execute unit tests
-      run: dotnet test MainProject/MainProject.csproj
+      run: dotnet test
 
     - name: Create new tool manifest
       run: dotnet new tool-manifest
