@@ -2,6 +2,6 @@
     "stryker-config":
     {
         "solution": "MainProject/MainProject.sln",
-        "project": "MainProject"
+        "project": "MainProject/MainProject.csproj"
     }
 }
