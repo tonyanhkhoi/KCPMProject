@@ -35,6 +35,10 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Execute unit tests
+      run: npm install stryker@latest
+      run: npm install date-format@latest
+      run: npm install streamroller@latest
+      run: npm install log4js@latest
       run: npx stryker run
 
     - name: Restore the application
