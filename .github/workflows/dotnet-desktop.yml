@@ -17,8 +17,7 @@ jobs:
     runs-on: windows-latest  
 
     env:
-      Solution_Name: ./MainProject/MainProject.sln
-      Test_Project_Path: ./NUnitTestProject.Tests/NUnitTestProject.csproj
+      Solution_Name: MainProject/MainProject.csproj
 
     steps:
     - name: Checkout
