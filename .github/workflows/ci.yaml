@@ -49,11 +49,14 @@ jobs:
     - name: Execute unit tests
       run: dotnet test MainProject/MainProject.csproj
 
-    - name: Init Dotnet Stryker
-      run: dotnet stryker init --config-file "stryker-config.json"
+    - name: Create new tool manifest
+        run: dotnet new tool-manifest
 
-    - name: Mutation Test
-      run: dotnet stryker -p "MainProject.csproj"
+    - name: Install dotnet stryker
+      run: dotnet tool install dotnet-stryker
+
+    - name: Execute mutation tests
+      run: dotnet stryker
       
     - name: Restore the application
       run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
