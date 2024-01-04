@@ -35,7 +35,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Nuget setup
-      uses: NuGet/setup-nuget@latest
+      uses: NuGet/setup-nuget@v1.2.0
     
     # - name: Install date-format
     #   run: npm install date-format@latest
