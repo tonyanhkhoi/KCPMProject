@@ -49,6 +49,9 @@ jobs:
     - name: Execute unit tests
       run: dotnet test MainProject/MainProject.csproj
 
+    - name: Init Dotnet Stryker
+      run: dotnet stryker init --config-file "stryker-config.json"
+
     - name: Mutation Test
       run: dotnet stryker 
       
