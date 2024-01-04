@@ -45,7 +45,8 @@ jobs:
         run: dotnet stryker init --config-file "stryker-config.json"
 
       - name: Execute mutation tests
-        run: dotnet stryker --config-file-path stryker-config.json --project-file MainProject.csproj
+        run: dotnet stryker config-file stryker-config.json --project-file MainProject.csproj
+
 
 
 
