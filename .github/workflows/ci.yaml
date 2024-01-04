@@ -15,7 +15,7 @@ jobs:
     runs-on: windows-latest
 
     env:
-      Solution_Name: MainProject.sln
+      Solution_Name: MainProject/MainProject.sln
 
     steps:
       - name: Checkout
@@ -30,7 +30,7 @@ jobs:
         uses: NuGet/setup-nuget@v1.2.0
 
       - name: Restore Packages
-        run: nuget restore MainProject.sln
+        run: nuget restore MainProject/MainProject.sln
 
       - name: Execute unit tests
         run: dotnet test
