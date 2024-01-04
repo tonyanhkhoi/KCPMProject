@@ -47,7 +47,7 @@ jobs:
       run: npm install log4js@latest
 
     - name: Execute unit tests
-      run: npx stryker run
+      run: stryker run
       
     - name: Restore the application
       run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
