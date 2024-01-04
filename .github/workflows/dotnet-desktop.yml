@@ -17,7 +17,7 @@ jobs:
     runs-on: windows-latest  
 
     env:
-      Solution_Name: ./MainProject.sln
+      Solution_Name: ./MainProject/MainProject.sln
       Test_Project_Path: ./NUnitTestProject.Tests/NUnitTestProject.csproj
 
     steps:
