@@ -15,7 +15,7 @@ jobs:
     runs-on: windows-latest
 
     env:
-      Solution_Name: MainProject.sln
+      Solution_Name: MainProject/MainProject.sln
 
     steps:
       - name: Checkout
@@ -30,10 +30,10 @@ jobs:
         uses: NuGet/setup-nuget@v1.2.0
 
       - name: Restore Packages
-        run: nuget restore MainProject.sln
+        run: nuget restore MainProject/MainProject.sln
 
       - name: Execute unit tests
-        run: dotnet test MainProject.csproj
+        run: dotnet test MainProject/MainProject.csproj
 
       - name: Create new tool manifest
         run: dotnet new tool-manifest
@@ -42,7 +42,7 @@ jobs:
         run: dotnet tool install dotnet-stryker
 
       - name: Execute mutation tests
-        run: dotnet stryker --config-file  stryker-config.json 
+        run: dotnet stryker --config-file  MainProject/stryker-config.json 
 
 
 
