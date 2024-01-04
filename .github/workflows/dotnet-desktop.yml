@@ -34,13 +34,21 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1.0.2
 
-    - name: Execute unit tests
+    - name: Install stryker
       run: npm install stryker@latest
+    
+    - name: Install date-format
       run: npm install date-format@latest
-      run: npm install streamroller@latest
-      run: npm install log4js@latest
-      run: npx stryker run
 
+    - name: Install StreamRoller
+      run: npm install streamroller@latest
+
+    - name: Install log4js
+      run: npm install log4js@latest
+
+    - name: Execute unit tests
+      run: npx stryker run
+      
     - name: Restore the application
       run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
       env:
