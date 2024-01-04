@@ -18,7 +18,7 @@ jobs:
 
     env:
       Solution_Name: MainProject/MainProject.sln
-
+      Project_Name: MainProject/MainProject.csproj
 
     steps:
     - name: Checkout
