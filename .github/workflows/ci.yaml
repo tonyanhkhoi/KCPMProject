@@ -42,5 +42,5 @@ jobs:
         run: dotnet tool install dotnet-stryker
 
       - name: Execute mutation tests
-        working-directory: ./MainProject
+        working-directory: MainProject
         run: dotnet stryker
