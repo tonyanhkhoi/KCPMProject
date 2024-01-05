@@ -7,7 +7,7 @@ using System.Windows.Controls;
 
 namespace MainProject.ValidationRules
 {
-    class CharacterValidationRule:ValidationRule
+    public class CharacterValidationRule:ValidationRule
     {
         public String ValidCharacterSet { get; set; }
         public String ErrorMessage { get; set; }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MainProject.StatisticWorkSpace
 {
-    class StatisticViewModel : BaseViewModel, IMainWorkSpace
+    public class StatisticViewModel : BaseViewModel, IMainWorkSpace
     {
         public string NameWorkSpace => "Thống kê";
         private const PackIconKind _iconDisplay = PackIconKind.Finance;

@@ -10,7 +10,7 @@ using System.Windows.Data;
 
 namespace MainProject.StatisticWorkSpace.Converter
 {
-    class DetailPieChartConverter : IValueConverter
+    public class DetailPieChartConverter : IValueConverter
     {
         public DetailPieChartConverter()
         {
