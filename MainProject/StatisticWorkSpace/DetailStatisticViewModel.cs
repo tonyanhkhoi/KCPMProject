@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MainProject.StatisticWorkSpace
 {
-    class DetailStatisticViewModel : StatisticViewModel
+    public class DetailStatisticViewModel : StatisticViewModel
     {
         string dateTimeRangeTitle;
         public string DateTimeRangeTitle => dateTimeRangeTitle;
@@ -50,6 +50,11 @@ namespace MainProject.StatisticWorkSpace
         public override String CreateLabel(StatisticModel model)
         {
             return model.Label;
+        }
+
+        public void SetTimeRange(object value1, object value2)
+        {
+            throw new NotImplementedException();
         }
 
         public DetailStatisticViewModel()

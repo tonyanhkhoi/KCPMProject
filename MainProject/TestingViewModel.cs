@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MainProject
 {
-    class TestingViewModel : BaseViewModel
+    public class TestingViewModel : BaseViewModel
     {
         private List<string> _mylistTest;
         private string _myTest;

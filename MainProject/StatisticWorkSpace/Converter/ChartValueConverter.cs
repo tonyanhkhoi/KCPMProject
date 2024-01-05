@@ -10,7 +10,7 @@ using LiveCharts;
 
 namespace MainProject.StatisticWorkSpace.Converter
 {
-    class ChartValueConverter : IValueConverter
+    public class ChartValueConverter : IValueConverter
     {
         public string PropertyName { get; set; }
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

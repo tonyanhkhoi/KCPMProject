@@ -42,7 +42,7 @@ namespace MainProject.Model
                     break;
             }
         }
-        private void ChangeStatusDB(bool isFixStatus)
+        public void ChangeStatusDB(bool isFixStatus)
         {
             using (var db = new mainEntities())
             {

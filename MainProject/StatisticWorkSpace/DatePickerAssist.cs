@@ -14,7 +14,7 @@ using DatePicker = System.Windows.Controls.DatePicker;
 
 namespace MainProject.StatisticWorkSpace
 {
-    class DatePickerMonthOfYear
+    public class DatePickerMonthOfYear
     {
         public static readonly DependencyProperty IsMonthYearProperty =
                DependencyProperty.RegisterAttached("IsMonthYear", typeof(bool), typeof(DatePickerMonthOfYear),
@@ -109,7 +109,7 @@ namespace MainProject.StatisticWorkSpace
         }
     }
 
-    class DatePickerYearOfDecade
+    public class DatePickerYearOfDecade
     {
         public static readonly DependencyProperty IsYearDecadeProperty =
                DependencyProperty.RegisterAttached("IsYearDecade", typeof(bool), typeof(DatePickerYearOfDecade),
@@ -328,7 +328,12 @@ namespace MainProject.StatisticWorkSpace
             textBox.Text = DatePickerDateTimeConverter.DateTimeToString(formatStr, datePicker.SelectedDate);
         }
 
-        private class DatePickerDateTimeConverter : IValueConverter
+        public static void SetDateFormat(DatePicker datePicker, string[] strings)
+        {
+            throw new NotImplementedException();
+        }
+
+        public class DatePickerDateTimeConverter : IValueConverter
         {
             public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
             {

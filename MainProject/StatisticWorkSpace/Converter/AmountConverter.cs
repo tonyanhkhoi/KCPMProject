@@ -8,7 +8,7 @@ using System.Windows.Data;
 
 namespace MainProject.StatisticWorkSpace.Converter
 {
-    class AmountConverter : IValueConverter
+    public class AmountConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
