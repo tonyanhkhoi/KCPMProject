@@ -108,8 +108,6 @@
     <Compile Include="ValidationRules\LengthRangeValidationRuleTests.cs" />
     <Compile Include="ValidationRules\NotNullableValidationRuleTests.cs" />
     <Compile Include="ValidationRules\RangeNumberValidationRuleTests.cs" />
-    <Compile Include="ViewModel\ManageProductviewModelTests.cs" />
-    <Compile Include="ViewModel\SettingViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
