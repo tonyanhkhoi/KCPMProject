@@ -1,7 +1,8 @@
 {
-    "stryker-config":
-    {
-        "solution": "MainProject/MainProject.sln",
-        "project": "MainProject"
-    }
+  "stryker-config": {
+    "reporters": [
+      "progress",
+      "html"
+    ]
+  }
 }
