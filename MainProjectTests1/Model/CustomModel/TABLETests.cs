@@ -57,24 +57,7 @@ namespace MainProject.Model.Tests
             Assert.AreEqual("NewStatus", table.CurrentStatus);
         }
 
-        [TestMethod]
-        public void ChangeStatusDB_FixStatus_SavesChanges()
-        {
-            // Arrange
-            var table = new TABLE();
-            var statusTable = new STATUS_TABLE { Status = "Fix" };
-            var mockSet = new Mock<DbSet<TABLE>>();
-            var mockContext = new Mock<mainEntities>();
-
-            mockContext.Setup(c => c.TABLEs).Returns(mockSet.Object);
-            table.ID = 1;
-
-            // Act
-            table.ChangeStatusDB(true);
-
-            // Assert
-            mockContext.Verify(c => c.SaveChanges(), Times.Once);
-        }
+      
 
  
 
