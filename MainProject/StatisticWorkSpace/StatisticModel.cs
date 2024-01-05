@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MainProject.StatisticWorkSpace
 {
-    class StatisticModel
+    public class StatisticModel
     {
         public DateTime TimeMin { get; set; }
         public DateTime TimeMax;

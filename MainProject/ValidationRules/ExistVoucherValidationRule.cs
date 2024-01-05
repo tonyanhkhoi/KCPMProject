@@ -10,7 +10,7 @@ using MainProject.Model;
 
 namespace MainProject.ValidationRules
 {
-    class ExistVoucherValidationRule : ValidationRule
+    public class ExistVoucherValidationRule : ValidationRule
     {
         public String ErrorMsg { get; set; }
 

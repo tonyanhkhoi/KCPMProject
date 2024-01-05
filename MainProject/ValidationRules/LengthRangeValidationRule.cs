@@ -7,7 +7,7 @@ using System.Windows.Controls;
 
 namespace MainProject.ValidationRules
 {
-    class LengthRangeValidationRule:ValidationRule
+    public class LengthRangeValidationRule:ValidationRule
     {
         public int Min { get; set; }
         public int Max { get; set; }
