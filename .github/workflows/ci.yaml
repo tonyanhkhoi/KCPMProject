@@ -7,40 +7,82 @@ on:
     branches: ["main"]
 
 jobs:
-  Test:
+  test-windows:
+    runs-on: windows-latest
     strategy:
       matrix:
         configuration: [windows-latest]
-
-    runs-on: windows-latest
-
     env:
       Solution_Name: MainProject/MainProject.sln
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
         with:
           fetch-depth: 0
-
       - name: Setup MSBuild.exe
         uses: microsoft/setup-msbuild@v1.3.1
-
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v1.2.0
-
       - name: Restore Packages
         run: nuget restore MainProject/MainProject.sln
-
       - name: Execute unit tests
         run: dotnet test MainProject/MainProject.csproj
-
       - name: Create new tool manifest
         run: dotnet new tool-manifest
-
       - name: Install dotnet stryker
         run: dotnet tool install dotnet-stryker
+      - name: Execute mutation tests
+        working-directory: MainProject
+        run: dotnet stryker
 
+  test-macos:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        configuration: [macos-latest]
+    env:
+      Solution_Name: MainProject/MainProject.sln
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.2.0
+      - name: Restore Packages
+        run: nuget restore MainProject/MainProject.sln
+      - name: Execute unit tests
+        run: dotnet test MainProject/MainProject.csproj
+      - name: Create new tool manifest
+        run: dotnet new tool-manifest
+      - name: Install dotnet stryker
+        run: dotnet tool install dotnet-stryker
+      - name: Execute mutation tests
+        working-directory: MainProject
+        run: dotnet stryker
+
+  test-ubuntu:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        configuration: [ubuntu-latest]
+    env:
+      Solution_Name: MainProject/MainProject.sln
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.2.0
+      - name: Restore Packages
+        run: nuget restore MainProject/MainProject.sln
+      - name: Execute unit tests
+        run: dotnet test MainProject/MainProject.csproj
+      - name: Create new tool manifest
+        run: dotnet new tool-manifest
+      - name: Install dotnet stryker
+        run: dotnet tool install dotnet-stryker
       - name: Execute mutation tests
         working-directory: MainProject
         run: dotnet stryker
