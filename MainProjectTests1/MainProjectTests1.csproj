@@ -90,6 +90,9 @@
   <ItemGroup>
     <Compile Include="Converters\TableConverterTests.cs" />
     <Compile Include="DetailProTests.cs" />
+    <Compile Include="HelperClass\BaseViewModelTests.cs" />
+    <Compile Include="HelperClass\MessageBoxManagerTests.cs" />
+    <Compile Include="HelperClass\WindowServiceTests.cs" />
     <Compile Include="Model\CustomModel\STATUS_TABLETests.cs" />
     <Compile Include="Model\CustomModel\TABLETests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

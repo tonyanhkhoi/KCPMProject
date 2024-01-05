@@ -68,7 +68,7 @@ namespace MainProject.HelperClass
         private static extern IntPtr GetDlgItem(IntPtr hDlg, int nIDDlgItem);
 
         [DllImport("user32.dll", EntryPoint = "SetWindowTextW", CharSet = CharSet.Unicode)]
-        private static extern bool SetWindowText(IntPtr hWnd, string lpString);
+        public static extern bool SetWindowText(IntPtr hWnd, string lpString);
 
 
         [StructLayout(LayoutKind.Sequential)]
